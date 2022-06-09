@@ -3,7 +3,7 @@
 
 name: James Petry
 studentNumber: z5426872 # if you're not at UNSW, your org name, e.g. BVN
-officialEmail: z5426872@unsw.edu.au
+officialEmail: z5426872@ad.unsw.edu.au
 contactEmail: # don't write on this linepython ../course/set1/tests.pypython ../course/set1/tests.py
   firstBit: jamespetrytb # this avoids spam, the @ is implied
   otherBit: gmail.com
