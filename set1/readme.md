@@ -1,2 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
-git 
+committing and pushing allows my work to be put on github
