@@ -2,7 +2,7 @@
   "1",
   {
     "of_total": 34,
-    "mark": 20,
+    "mark": 21,
     "results": [
       {
         "value": 1,
@@ -85,7 +85,7 @@
         "name": "Exercise 2: debug the file"
       },
       {
-        "value": 0,
+        "value": 1,
         "name": "Exercise 3: is_odd - is 2 odd"
       },
       {
