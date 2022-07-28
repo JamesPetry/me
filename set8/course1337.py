@@ -166,7 +166,11 @@ def pet_filter(letter="a") -> List:
     ]
     # fmt: on
     filtered = []
-
+    length = len(pets)
+    for i in range(length):
+        if letter in pets[i]:
+            item = str(pets[i])
+            filtered.append(item)
     return filtered
 
 
