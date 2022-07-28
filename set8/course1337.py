@@ -140,8 +140,15 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
+    input_string = input_string.upper()
+    lst = list(input_string)
+    ls = []
+    for i in lst:
+        i = f"🔥{i}"
+        ls.append("🔥")
+        st = "".join(ls)
 
-    return None
+    return st
 
 
 def pet_filter(letter="a") -> List:
