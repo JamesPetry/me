@@ -8,6 +8,7 @@ import requests
 import inspect
 import sys
 import re
+
 # Handy constants
 LOCAL = os.path.dirname(os.path.realpath(__file__))  # the context of this file
 CWD = os.getcwd()  # The curent working directory
@@ -20,6 +21,8 @@ if LOCAL != CWD:
     CWD: "CWD
     """
     )
+
+
 def get_some_details():
     """Parse some JSON.
     In lazyduck.json is a description of a person from https://randomuser.me/
@@ -54,6 +57,8 @@ def get_some_details():
         "password": password,
         "postcodePlusID": postcodePlusID,
     }
+
+
 def wordy_pyramid():
     """Make a pyramid out of real words.
     There is a random word generator here:
@@ -94,17 +99,23 @@ def wordy_pyramid():
     # counting up from startNum to stopNum, with incraments of stepNum
     for wordLength in range(startNum, stopNum, stepNum):
         # importing a random word & decoding it from bites to a string (length of word == wordLength variable), then adding it to the list
-        word = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={wordLength}")
+        word = requests.get(
+            f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={wordLength}"
+        )
         word = word.text
         pyramid.append(word)
         # counting back down from stopNum to startNum with the same increments as before (stepNum is negative as we are counting backwards)
         if wordLength >= stopNum - stepNum:
             for negWordLength in range(stopNum - 1, startNum, -stepNum):
                 # importing a random world & decoding... length of word == negWordLength.
-                word = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={negWordLength}")
+                word = requests.get(
+                    f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={negWordLength}"
+                )
                 word = word.text
                 pyramid.append(word)
     return pyramid
+
+
 def pokedex(low=1, high=5):
     """Return the name, height and weight of the tallest pokemon in the range low to high.
     Low and high are the range of pokemon ids to search between.
@@ -135,12 +146,14 @@ def pokedex(low=1, high=5):
     # pull the required info of the tallest pokemon and return it in a dict.
     url = f"https://pokeapi.co/api/v2/pokemon/{tallest_id}"
     r = requests.get(url)
-    if r.status_code is 200:
-            data = json.loads(r.text)
-            pokename = data["name"]
-            pokeweight = data["weight"]
-            pokeheight = data["height"]
+    if r.status_code == 200:
+        data = json.loads(r.text)
+        pokename = data["name"]
+        pokeweight = data["weight"]
+        pokeheight = data["height"]
     return {"name": pokename, "weight": pokeweight, "height": pokeheight}
+
+
 def diarist():
     """Read gcode and find facts about it.
     Read in Trispokedovetiles(laser).gcode and count the number of times the
@@ -156,12 +169,15 @@ def diarist():
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
     # open the gcode file and count the number of occurances of "M10 P1" (laser on/off), then store the answer in variable "count"
-    with open(LOCAL + "/Trispokedovetiles(laser).gcode", "r", encoding="utf-8") as gcode:
+    with open(
+        LOCAL + "/Trispokedovetiles(laser).gcode", "r", encoding="utf-8"
+    ) as gcode:
         data = gcode.read()
-        count = data.count('M10 P1')
+        count = data.count("M10 P1")
     # write the answer to a file called 'lasers.pew' in the Set4 dir
     with open(LOCAL + "\lasers.pew", "w", encoding="utf-8") as pew_num:
         pew_num.write(f"{count}")
+
 
 if __name__ == "__main__":
     print(get_some_details())
