@@ -1,13 +1,7 @@
 """All about IO."""
 import json
 import os
-from threading import local
-from tkinter import W
-import py
 import requests
-import inspect
-import sys
-import re
 
 # Handy constants
 LOCAL = os.path.dirname(os.path.realpath(__file__))  # the context of this file
